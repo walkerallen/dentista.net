@@ -1,0 +1,7 @@
+c:\users\personal\documents\visual studio 2010\Projects\dentista\dentista\bin\dentista.dll
+c:\users\personal\documents\visual studio 2010\Projects\dentista\dentista\bin\dentista.pdb
+c:\users\personal\documents\visual studio 2010\Projects\dentista\dentista\bin\EntityFramework.dll
+c:\users\personal\documents\visual studio 2010\Projects\dentista\dentista\bin\EntityFramework.xml
+c:\users\personal\documents\visual studio 2010\Projects\dentista\dentista\obj\Debug\ResolveAssemblyReference.cache
+c:\users\personal\documents\visual studio 2010\Projects\dentista\dentista\obj\Debug\dentista.dll
+c:\users\personal\documents\visual studio 2010\Projects\dentista\dentista\obj\Debug\dentista.pdb

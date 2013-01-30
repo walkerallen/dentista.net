@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dentistaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="dentistaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="canton" EntityType="dentistaModel.canton" />
+    <EntitySet Name="citas" EntityType="dentistaModel.citas" />
+    <EntitySet Name="cliente" EntityType="dentistaModel.cliente" />
+    <EntitySet Name="contacto" EntityType="dentistaModel.contacto" />
+    <EntitySet Name="distritos" EntityType="dentistaModel.distritos" />
+    <EntitySet Name="empresa" EntityType="dentistaModel.empresa" />
+    <EntitySet Name="envios" EntityType="dentistaModel.envios" />
+    <EntitySet Name="estadocivil" EntityType="dentistaModel.estadocivil" />
+    <EntitySet Name="mediopago" EntityType="dentistaModel.mediopago" />
+    <EntitySet Name="pagos" EntityType="dentistaModel.pagos" />
+    <EntitySet Name="persona" EntityType="dentistaModel.persona" />
+    <EntitySet Name="provincia" EntityType="dentistaModel.provincia" />
+    <EntitySet Name="rightsarea" EntityType="dentistaModel.rightsarea" />
+    <EntitySet Name="rightsuser" EntityType="dentistaModel.rightsuser" />
+    <EntitySet Name="sysdiagrams" EntityType="dentistaModel.sysdiagrams" />
+    <EntitySet Name="tipoidentificacion" EntityType="dentistaModel.tipoidentificacion" />
+    <EntitySet Name="usuarios" EntityType="dentistaModel.usuarios" />
+    <EntitySet Name="vrights" EntityType="dentistaModel.vrights" />
+    <AssociationSet Name="canton_FK_canton_provincia" Association="dentistaModel.canton_FK_canton_provincia">
+      <End Role="provincia" EntitySet="provincia" />
+      <End Role="canton" EntitySet="canton" />
+    </AssociationSet>
+    <AssociationSet Name="distritos_fk_distritos_canton" Association="dentistaModel.distritos_fk_distritos_canton">
+      <End Role="canton" EntitySet="canton" />
+      <End Role="distritos" EntitySet="distritos" />
+    </AssociationSet>
+    <AssociationSet Name="cliente_FK_cliente_persona" Association="dentistaModel.cliente_FK_cliente_persona">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="cliente" EntitySet="cliente" />
+    </AssociationSet>
+    <AssociationSet Name="cliente_FK_cliente_usuarios" Association="dentistaModel.cliente_FK_cliente_usuarios">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="cliente" EntitySet="cliente" />
+    </AssociationSet>
+    <AssociationSet Name="contacto_contacto_ibfk_1" Association="dentistaModel.contacto_contacto_ibfk_1">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="contacto" EntitySet="contacto" />
+    </AssociationSet>
+    <AssociationSet Name="contacto_contacto_ibfk_2" Association="dentistaModel.contacto_contacto_ibfk_2">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="contacto" EntitySet="contacto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuarios_empresa" Association="dentistaModel.FK_usuarios_empresa">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="usuarios" EntitySet="usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="persona_FK_persona_estadocivil" Association="dentistaModel.persona_FK_persona_estadocivil">
+      <End Role="estadocivil" EntitySet="estadocivil" />
+      <End Role="persona" EntitySet="persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuarios_persona" Association="dentistaModel.FK_usuarios_persona">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="usuarios" EntitySet="usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="persona_FK_persona_tipoidentificacion" Association="dentistaModel.persona_FK_persona_tipoidentificacion">
+      <End Role="tipoidentificacion" EntitySet="tipoidentificacion" />
+      <End Role="persona" EntitySet="persona" />
+    </AssociationSet>
+    <AssociationSet Name="rightsuser_rightsuser_ibfk_1" Association="dentistaModel.rightsuser_rightsuser_ibfk_1">
+      <End Role="rightsarea" EntitySet="rightsarea" />
+      <End Role="rightsuser" EntitySet="rightsuser" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="canton">
+    <Key>
+      <PropertyRef Name="cantonid" />
+    </Key>
+    <Property Name="cantonid" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="provinciaid" Type="Int16" />
+    <NavigationProperty Name="provincia" Relationship="dentistaModel.canton_FK_canton_provincia" FromRole="canton" ToRole="provincia" />
+    <NavigationProperty Name="distritos" Relationship="dentistaModel.distritos_fk_distritos_canton" FromRole="canton" ToRole="distritos" />
+  </EntityType>
+  <EntityType Name="citas">
+    <Key>
+      <PropertyRef Name="citaidid" />
+    </Key>
+    <Property Name="citaidid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="detalle" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="fecha" Type="DateTime" />
+    <Property Name="inicio" Type="Time" />
+    <Property Name="fin" Type="Time" />
+    <Property Name="usuarioid" Type="Int64" />
+    <Property Name="clienteid" Type="Int64" />
+  </EntityType>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="clienteid" />
+    </Key>
+    <Property Name="clienteid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="personaid" Type="Int64" Nullable="false" />
+    <Property Name="usuarioid" Type="Int32" />
+    <Property Name="notificar" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="persona" Relationship="dentistaModel.cliente_FK_cliente_persona" FromRole="cliente" ToRole="persona" />
+    <NavigationProperty Name="usuarios" Relationship="dentistaModel.cliente_FK_cliente_usuarios" FromRole="cliente" ToRole="usuarios" />
+    <NavigationProperty Name="contacto" Relationship="dentistaModel.contacto_contacto_ibfk_1" FromRole="cliente" ToRole="contacto" />
+  </EntityType>
+  <EntityType Name="contacto">
+    <Key>
+      <PropertyRef Name="contactoid" />
+    </Key>
+    <Property Name="contactoid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="clienteid" Type="Int64" />
+    <Property Name="personaid" Type="Int64" />
+    <Property Name="notificar" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="cliente" Relationship="dentistaModel.contacto_contacto_ibfk_1" FromRole="contacto" ToRole="cliente" />
+    <NavigationProperty Name="persona" Relationship="dentistaModel.contacto_contacto_ibfk_2" FromRole="contacto" ToRole="persona" />
+  </EntityType>
+  <EntityType Name="distritos">
+    <Key>
+      <PropertyRef Name="distritoid" />
+    </Key>
+    <Property Name="distritoid" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="cantonid" Type="Int16" />
+    <NavigationProperty Name="canton" Relationship="dentistaModel.distritos_fk_distritos_canton" FromRole="distritos" ToRole="canton" />
+  </EntityType>
+  <EntityType Name="empresa">
+    <Key>
+      <PropertyRef Name="empresaid" />
+    </Key>
+    <Property Name="empresaid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="telefono" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="fax" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="sitioweb" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="slogan" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="diasanotificaremail" Type="Int16" Nullable="false" />
+    <Property Name="notificacionemail" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="diasanotificarmovil" Type="Int16" Nullable="false" />
+    <Property Name="notificacionmovil" Type="String" Nullable="false" MaxLength="140" Unicode="false" FixedLength="false" />
+    <Property Name="ingreso" Type="DateTime" />
+    <Property Name="renovacion" Type="DateTime" />
+    <NavigationProperty Name="usuarios" Relationship="dentistaModel.FK_usuarios_empresa" FromRole="empresa" ToRole="usuarios" />
+  </EntityType>
+  <EntityType Name="envios">
+    <Key>
+      <PropertyRef Name="envioid" />
+    </Key>
+    <Property Name="envioid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" />
+    <Property Name="poliza" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="cliente" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="estado" Type="Int16" />
+    <Property Name="causa" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="medio" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="empresaid" Type="Int64" />
+    <Property Name="personaid" Type="Int64" />
+    <Property Name="clienteid" Type="Int64" />
+    <Property Name="referencia" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="estadocivil">
+    <Key>
+      <PropertyRef Name="estadocivilid" />
+    </Key>
+    <Property Name="estadocivilid" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="persona" Relationship="dentistaModel.persona_FK_persona_estadocivil" FromRole="estadocivil" ToRole="persona" />
+  </EntityType>
+  <EntityType Name="mediopago">
+    <Key>
+      <PropertyRef Name="mediopagoid" />
+    </Key>
+    <Property Name="mediopagoid" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="pagos">
+    <Key>
+      <PropertyRef Name="pagosid" />
+    </Key>
+    <Property Name="pagosid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" />
+    <Property Name="seguroclientesid" Type="Int64" />
+    <Property Name="completado" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="persona">
+    <Key>
+      <PropertyRef Name="personaid" />
+    </Key>
+    <Property Name="personaid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="apellido" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="apellido2" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="nacimiento" Type="DateTime" />
+    <Property Name="noidentificacion" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="tipoidentificacionid" Type="Int16" />
+    <Property Name="telefono" Type="Int32" />
+    <Property Name="celular" Type="Int32" />
+    <Property Name="oficina" Type="Int32" />
+    <Property Name="correoelectronico" Type="String" Nullable="false" MaxLength="70" Unicode="false" FixedLength="false" />
+    <Property Name="estadocivilid" Type="Int16" />
+    <Property Name="fumador" Type="Int16" />
+    <Property Name="ocupacion" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="cantonid" Type="Int16" Nullable="false" />
+    <Property Name="provinciaid" Type="Int16" Nullable="false" />
+    <Property Name="direccion" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="cliente" Relationship="dentistaModel.cliente_FK_cliente_persona" FromRole="persona" ToRole="cliente" />
+    <NavigationProperty Name="contacto" Relationship="dentistaModel.contacto_contacto_ibfk_2" FromRole="persona" ToRole="contacto" />
+    <NavigationProperty Name="estadocivil" Relationship="dentistaModel.persona_FK_persona_estadocivil" FromRole="persona" ToRole="estadocivil" />
+    <NavigationProperty Name="usuarios" Relationship="dentistaModel.FK_usuarios_persona" FromRole="persona" ToRole="usuarios" />
+    <NavigationProperty Name="tipoidentificacion" Relationship="dentistaModel.persona_FK_persona_tipoidentificacion" FromRole="persona" ToRole="tipoidentificacion" />
+  </EntityType>
+  <EntityType Name="provincia">
+    <Key>
+      <PropertyRef Name="provinciaid" />
+    </Key>
+    <Property Name="provinciaid" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="canton" Relationship="dentistaModel.canton_FK_canton_provincia" FromRole="provincia" ToRole="canton" />
+  </EntityType>
+  <EntityType Name="rightsarea">
+    <Key>
+      <PropertyRef Name="rightsareaid" />
+    </Key>
+    <Property Name="rightsareaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="rightsuser" Relationship="dentistaModel.rightsuser_rightsuser_ibfk_1" FromRole="rightsarea" ToRole="rightsuser" />
+  </EntityType>
+  <EntityType Name="rightsuser">
+    <Key>
+      <PropertyRef Name="rightsuserid" />
+    </Key>
+    <Property Name="rightsuserid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rightsareaid" Type="Int32" />
+    <Property Name="userid" Type="Int16" />
+    <Property Name="reader" Type="Int16" />
+    <Property Name="writer" Type="Int16" />
+    <Property Name="deleter" Type="Int16" />
+    <NavigationProperty Name="rightsarea" Relationship="dentistaModel.rightsuser_rightsuser_ibfk_1" FromRole="rightsuser" ToRole="rightsarea" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tipoidentificacion">
+    <Key>
+      <PropertyRef Name="tipoidentificacionid" />
+    </Key>
+    <Property Name="tipoidentificacionid" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="persona" Relationship="dentistaModel.persona_FK_persona_tipoidentificacion" FromRole="tipoidentificacion" ToRole="persona" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="usuarioid" />
+    </Key>
+    <Property Name="usuarioid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="usuario" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="clave" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="personaid" Type="Int64" />
+    <Property Name="accesoid" Type="Int16" />
+    <Property Name="habilitado" Type="Int16" />
+    <Property Name="empresaid" Type="Int64" />
+    <NavigationProperty Name="cliente" Relationship="dentistaModel.cliente_FK_cliente_usuarios" FromRole="usuarios" ToRole="cliente" />
+    <NavigationProperty Name="empresa" Relationship="dentistaModel.FK_usuarios_empresa" FromRole="usuarios" ToRole="empresa" />
+    <NavigationProperty Name="persona" Relationship="dentistaModel.FK_usuarios_persona" FromRole="usuarios" ToRole="persona" />
+  </EntityType>
+  <EntityType Name="vrights">
+    <Key>
+      <PropertyRef Name="rightsareaid" />
+      <PropertyRef Name="usuarioid" />
+    </Key>
+    <Property Name="section" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="reader" Type="Int16" />
+    <Property Name="writer" Type="Int16" />
+    <Property Name="deleter" Type="Int16" />
+    <Property Name="rightsuserid" Type="Int32" />
+    <Property Name="rightsareaid" Type="Int32" Nullable="false" />
+    <Property Name="usuarioid" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="canton_FK_canton_provincia">
+    <End Role="provincia" Type="dentistaModel.provincia" Multiplicity="0..1" />
+    <End Role="canton" Type="dentistaModel.canton" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="provincia">
+        <PropertyRef Name="provinciaid" />
+      </Principal>
+      <Dependent Role="canton">
+        <PropertyRef Name="provinciaid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="distritos_fk_distritos_canton">
+    <End Role="canton" Type="dentistaModel.canton" Multiplicity="0..1" />
+    <End Role="distritos" Type="dentistaModel.distritos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="canton">
+        <PropertyRef Name="cantonid" />
+      </Principal>
+      <Dependent Role="distritos">
+        <PropertyRef Name="cantonid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="cliente_FK_cliente_persona">
+    <End Role="persona" Type="dentistaModel.persona" Multiplicity="1" />
+    <End Role="cliente" Type="dentistaModel.cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="personaid" />
+      </Principal>
+      <Dependent Role="cliente">
+        <PropertyRef Name="personaid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="cliente_FK_cliente_usuarios">
+    <End Role="usuarios" Type="dentistaModel.usuarios" Multiplicity="0..1" />
+    <End Role="cliente" Type="dentistaModel.cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="usuarioid" />
+      </Principal>
+      <Dependent Role="cliente">
+        <PropertyRef Name="usuarioid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="contacto_contacto_ibfk_1">
+    <End Role="cliente" Type="dentistaModel.cliente" Multiplicity="0..1" />
+    <End Role="contacto" Type="dentistaModel.contacto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="clienteid" />
+      </Principal>
+      <Dependent Role="contacto">
+        <PropertyRef Name="clienteid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="contacto_contacto_ibfk_2">
+    <End Role="persona" Type="dentistaModel.persona" Multiplicity="0..1" />
+    <End Role="contacto" Type="dentistaModel.contacto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="personaid" />
+      </Principal>
+      <Dependent Role="contacto">
+        <PropertyRef Name="personaid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_usuarios_empresa">
+    <End Role="empresa" Type="dentistaModel.empresa" Multiplicity="0..1" />
+    <End Role="usuarios" Type="dentistaModel.usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="empresaid" />
+      </Principal>
+      <Dependent Role="usuarios">
+        <PropertyRef Name="empresaid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="persona_FK_persona_estadocivil">
+    <End Role="estadocivil" Type="dentistaModel.estadocivil" Multiplicity="0..1" />
+    <End Role="persona" Type="dentistaModel.persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estadocivil">
+        <PropertyRef Name="estadocivilid" />
+      </Principal>
+      <Dependent Role="persona">
+        <PropertyRef Name="estadocivilid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_usuarios_persona">
+    <End Role="persona" Type="dentistaModel.persona" Multiplicity="0..1" />
+    <End Role="usuarios" Type="dentistaModel.usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="personaid" />
+      </Principal>
+      <Dependent Role="usuarios">
+        <PropertyRef Name="personaid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="persona_FK_persona_tipoidentificacion">
+    <End Role="tipoidentificacion" Type="dentistaModel.tipoidentificacion" Multiplicity="0..1" />
+    <End Role="persona" Type="dentistaModel.persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipoidentificacion">
+        <PropertyRef Name="tipoidentificacionid" />
+      </Principal>
+      <Dependent Role="persona">
+        <PropertyRef Name="tipoidentificacionid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="rightsuser_rightsuser_ibfk_1">
+    <End Role="rightsarea" Type="dentistaModel.rightsarea" Multiplicity="0..1" />
+    <End Role="rightsuser" Type="dentistaModel.rightsuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rightsarea">
+        <PropertyRef Name="rightsareaid" />
+      </Principal>
+      <Dependent Role="rightsuser">
+        <PropertyRef Name="rightsareaid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

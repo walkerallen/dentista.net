@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dentistaModelStoreContainer" CdmEntityContainer="dentistaEntities">
+    <EntitySetMapping Name="canton">
+      <EntityTypeMapping TypeName="dentistaModel.canton">
+        <MappingFragment StoreEntitySet="canton">
+          <ScalarProperty Name="cantonid" ColumnName="cantonid" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="provinciaid" ColumnName="provinciaid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="citas">
+      <EntityTypeMapping TypeName="dentistaModel.citas">
+        <MappingFragment StoreEntitySet="citas">
+          <ScalarProperty Name="citaidid" ColumnName="citaidid" />
+          <ScalarProperty Name="detalle" ColumnName="detalle" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="inicio" ColumnName="inicio" />
+          <ScalarProperty Name="fin" ColumnName="fin" />
+          <ScalarProperty Name="usuarioid" ColumnName="usuarioid" />
+          <ScalarProperty Name="clienteid" ColumnName="clienteid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cliente">
+      <EntityTypeMapping TypeName="dentistaModel.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="clienteid" ColumnName="clienteid" />
+          <ScalarProperty Name="personaid" ColumnName="personaid" />
+          <ScalarProperty Name="usuarioid" ColumnName="usuarioid" />
+          <ScalarProperty Name="notificar" ColumnName="notificar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="contacto">
+      <EntityTypeMapping TypeName="dentistaModel.contacto">
+        <MappingFragment StoreEntitySet="contacto">
+          <ScalarProperty Name="contactoid" ColumnName="contactoid" />
+          <ScalarProperty Name="clienteid" ColumnName="clienteid" />
+          <ScalarProperty Name="personaid" ColumnName="personaid" />
+          <ScalarProperty Name="notificar" ColumnName="notificar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="distritos">
+      <EntityTypeMapping TypeName="dentistaModel.distritos">
+        <MappingFragment StoreEntitySet="distritos">
+          <ScalarProperty Name="distritoid" ColumnName="distritoid" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cantonid" ColumnName="cantonid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="empresa">
+      <EntityTypeMapping TypeName="dentistaModel.empresa">
+        <MappingFragment StoreEntitySet="empresa">
+          <ScalarProperty Name="empresaid" ColumnName="empresaid" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="fax" ColumnName="fax" />
+          <ScalarProperty Name="sitioweb" ColumnName="sitioweb" />
+          <ScalarProperty Name="slogan" ColumnName="slogan" />
+          <ScalarProperty Name="diasanotificaremail" ColumnName="diasanotificaremail" />
+          <ScalarProperty Name="notificacionemail" ColumnName="notificacionemail" />
+          <ScalarProperty Name="diasanotificarmovil" ColumnName="diasanotificarmovil" />
+          <ScalarProperty Name="notificacionmovil" ColumnName="notificacionmovil" />
+          <ScalarProperty Name="ingreso" ColumnName="ingreso" />
+          <ScalarProperty Name="renovacion" ColumnName="renovacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="envios">
+      <EntityTypeMapping TypeName="dentistaModel.envios">
+        <MappingFragment StoreEntitySet="envios">
+          <ScalarProperty Name="envioid" ColumnName="envioid" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="poliza" ColumnName="poliza" />
+          <ScalarProperty Name="cliente" ColumnName="cliente" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="causa" ColumnName="causa" />
+          <ScalarProperty Name="medio" ColumnName="medio" />
+          <ScalarProperty Name="empresaid" ColumnName="empresaid" />
+          <ScalarProperty Name="personaid" ColumnName="personaid" />
+          <ScalarProperty Name="clienteid" ColumnName="clienteid" />
+          <ScalarProperty Name="referencia" ColumnName="referencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estadocivil">
+      <EntityTypeMapping TypeName="dentistaModel.estadocivil">
+        <MappingFragment StoreEntitySet="estadocivil">
+          <ScalarProperty Name="estadocivilid" ColumnName="estadocivilid" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mediopago">
+      <EntityTypeMapping TypeName="dentistaModel.mediopago">
+        <MappingFragment StoreEntitySet="mediopago">
+          <ScalarProperty Name="mediopagoid" ColumnName="mediopagoid" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pagos">
+      <EntityTypeMapping TypeName="dentistaModel.pagos">
+        <MappingFragment StoreEntitySet="pagos">
+          <ScalarProperty Name="pagosid" ColumnName="pagosid" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="seguroclientesid" ColumnName="seguroclientesid" />
+          <ScalarProperty Name="completado" ColumnName="completado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="persona">
+      <EntityTypeMapping TypeName="dentistaModel.persona">
+        <MappingFragment StoreEntitySet="persona">
+          <ScalarProperty Name="personaid" ColumnName="personaid" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+          <ScalarProperty Name="nacimiento" ColumnName="nacimiento" />
+          <ScalarProperty Name="noidentificacion" ColumnName="noidentificacion" />
+          <ScalarProperty Name="tipoidentificacionid" ColumnName="tipoidentificacionid" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="oficina" ColumnName="oficina" />
+          <ScalarProperty Name="correoelectronico" ColumnName="correoelectronico" />
+          <ScalarProperty Name="estadocivilid" ColumnName="estadocivilid" />
+          <ScalarProperty Name="fumador" ColumnName="fumador" />
+          <ScalarProperty Name="ocupacion" ColumnName="ocupacion" />
+          <ScalarProperty Name="cantonid" ColumnName="cantonid" />
+          <ScalarProperty Name="provinciaid" ColumnName="provinciaid" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="provincia">
+      <EntityTypeMapping TypeName="dentistaModel.provincia">
+        <MappingFragment StoreEntitySet="provincia">
+          <ScalarProperty Name="provinciaid" ColumnName="provinciaid" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rightsarea">
+      <EntityTypeMapping TypeName="dentistaModel.rightsarea">
+        <MappingFragment StoreEntitySet="rightsarea">
+          <ScalarProperty Name="rightsareaid" ColumnName="rightsareaid" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rightsuser">
+      <EntityTypeMapping TypeName="dentistaModel.rightsuser">
+        <MappingFragment StoreEntitySet="rightsuser">
+          <ScalarProperty Name="rightsuserid" ColumnName="rightsuserid" />
+          <ScalarProperty Name="rightsareaid" ColumnName="rightsareaid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="reader" ColumnName="reader" />
+          <ScalarProperty Name="writer" ColumnName="writer" />
+          <ScalarProperty Name="deleter" ColumnName="deleter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="dentistaModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipoidentificacion">
+      <EntityTypeMapping TypeName="dentistaModel.tipoidentificacion">
+        <MappingFragment StoreEntitySet="tipoidentificacion">
+          <ScalarProperty Name="tipoidentificacionid" ColumnName="tipoidentificacionid" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="dentistaModel.usuarios">
+        <MappingFragment StoreEntitySet="usuarios">
+          <ScalarProperty Name="usuarioid" ColumnName="usuarioid" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="clave" ColumnName="clave" />
+          <ScalarProperty Name="personaid" ColumnName="personaid" />
+          <ScalarProperty Name="accesoid" ColumnName="accesoid" />
+          <ScalarProperty Name="habilitado" ColumnName="habilitado" />
+          <ScalarProperty Name="empresaid" ColumnName="empresaid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vrights">
+      <EntityTypeMapping TypeName="dentistaModel.vrights">
+        <MappingFragment StoreEntitySet="vrights">
+          <ScalarProperty Name="section" ColumnName="section" />
+          <ScalarProperty Name="reader" ColumnName="reader" />
+          <ScalarProperty Name="writer" ColumnName="writer" />
+          <ScalarProperty Name="deleter" ColumnName="deleter" />
+          <ScalarProperty Name="rightsuserid" ColumnName="rightsuserid" />
+          <ScalarProperty Name="rightsareaid" ColumnName="rightsareaid" />
+          <ScalarProperty Name="usuarioid" ColumnName="usuarioid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
